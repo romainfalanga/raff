@@ -35,8 +35,8 @@ export const Navigation: React.FC = () => {
                 onClick={() => handleNavigation(page.path)}
                 className={`text-sm font-medium transition-colors duration-200 hover:text-blue-600 ${
                   isActivePage(page.path)
-                    ? 'text-blue-700 border-b-2 border-blue-700 pb-1'
-                    : 'text-slate-700'
+                    ? 'text-red-400 border-b-2 border-red-400 pb-1'
+                    : 'text-gray-300'
                 }`}
               >
                 {page.name}
@@ -50,7 +50,7 @@ export const Navigation: React.FC = () => {
       <div className="lg:hidden">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 text-slate-700 hover:text-blue-600 transition-all duration-300 hover:bg-blue-50 rounded-lg"
+          className="p-2 text-gray-300 hover:text-red-400 transition-all duration-300 hover:bg-red-900/20 rounded-lg"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -58,7 +58,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/50 shadow-2xl z-50">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-xl border-t border-red-600/30 shadow-2xl z-50">
           <nav className="p-6">
             <ul className="space-y-3">
               {pages.map((page) => (
@@ -67,8 +67,8 @@ export const Navigation: React.FC = () => {
                     onClick={() => handleNavigation(page.path)}
                     className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                       isActivePage(page.path)
-                        ? 'text-blue-700 bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50 hover:shadow-sm'
+                        ? 'text-red-400 bg-gradient-to-r from-red-900/30 to-red-800/30 shadow-md'
+                        : 'text-gray-300 hover:text-red-400 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-red-900/20 hover:shadow-sm'
                     }`}
                   >
                     {page.name}

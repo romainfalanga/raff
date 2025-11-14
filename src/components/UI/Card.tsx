@@ -21,14 +21,14 @@ export const Card: React.FC<CardProps> = ({
   const hoverStyles = hover ? 'hover:shadow-lg hover:-translate-y-1' : '';
 
   return (
-    <div className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 transition-all duration-500 border border-slate-200/50 hover:border-blue-200/50 ${hover ? 'hover:-translate-y-2 hover:scale-105' : ''} ${className} group`}>
+    <div className={`bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl p-8 transition-all duration-500 border border-gray-700/50 hover:border-red-600/50 ${hover ? 'hover:-translate-y-2 hover:scale-105' : ''} ${className} group`}>
       {Icon && (
-        <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl mb-6 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-500 shadow-md group-hover:shadow-lg">
-          <Icon size={28} className="text-blue-700 group-hover:text-blue-800 group-hover:scale-110 transition-all duration-300" />
+        <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-900/30 to-red-800/30 rounded-2xl mb-6 group-hover:from-red-800/40 group-hover:to-red-700/40 transition-all duration-500 shadow-md group-hover:shadow-lg">
+          <Icon size={28} className="text-red-400 group-hover:text-red-300 group-hover:scale-110 transition-all duration-300" />
         </div>
       )}
-      <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-900 transition-colors duration-300 tracking-tight">{title}</h3>
-      <p className="text-slate-600 mb-6 leading-relaxed text-lg group-hover:text-slate-700 transition-colors duration-300">{description}</p>
+      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-red-300 transition-colors duration-300 tracking-tight">{title}</h3>
+      <p className="text-gray-300 mb-6 leading-relaxed text-lg group-hover:text-gray-200 transition-colors duration-300">{description}</p>
       {children}
     </div>
   );

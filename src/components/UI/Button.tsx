@@ -25,10 +25,10 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white focus:ring-blue-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300',
-    secondary: 'bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white focus:ring-slate-500 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300',
-    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 hover:text-white focus:ring-blue-500 shadow-sm hover:shadow-md transition-all duration-300',
-    ghost: 'text-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-slate-100 focus:ring-slate-500 hover:shadow-sm transition-all duration-300',
+    primary: 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white focus:ring-red-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300',
+    secondary: 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white focus:ring-gray-500 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300',
+    outline: 'border-2 border-red-600 text-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-700 hover:text-white focus:ring-red-500 shadow-sm hover:shadow-md transition-all duration-300',
+    ghost: 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-red-900/20 focus:ring-red-500 hover:shadow-sm transition-all duration-300',
   };
 
   const sizes = {

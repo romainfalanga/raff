@@ -23,13 +23,13 @@ const iconMap = {
 
 export const ServiceCards: React.FC<ServiceCardsProps> = ({ services, onNavigate }) => {
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tight">
+          <h2 className="text-5xl font-black text-white mb-8 tracking-tight">
             Nos Solutions de Sécurité
           </h2>
-          <p className="text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
             Des systèmes de sécurité modernes et fiables, sans abonnement mensuel. 
             Un seul investissement pour une protection durable.
           </p>

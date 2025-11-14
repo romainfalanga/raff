@@ -88,7 +88,7 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
               value={formData.nom}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-                errors.nom ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400 focus:border-blue-500 bg-white hover:bg-slate-50'
+                errors.nom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
               }`}
               placeholder="Votre nom"
             />
@@ -106,7 +106,7 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
               value={formData.prenom}
               onChange={handleChange}
               className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-                errors.prenom ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400 focus:border-blue-500 bg-white hover:bg-slate-50'
+                errors.prenom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
               }`}
               placeholder="Votre prénom"
             />
@@ -125,7 +125,7 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             value={formData.telephone}
             onChange={handleChange}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-              errors.telephone ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400 focus:border-blue-500 bg-white hover:bg-slate-50'
+              errors.telephone ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
             }`}
             placeholder="06 12 34 56 78"
           />
@@ -143,7 +143,7 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             value={formData.email}
             onChange={handleChange}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-              errors.email ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400 focus:border-blue-500 bg-white hover:bg-slate-50'
+              errors.email ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
             }`}
             placeholder="votre.email@exemple.com"
           />
@@ -161,15 +161,15 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             onChange={handleChange}
             rows={4}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-300 ${
-              errors.message ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400 focus:border-blue-500 bg-white hover:bg-slate-50'
+              errors.message ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
             }`}
             placeholder="Décrivez votre projet de sécurité..."
           />
           {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
         </div>
 
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200/50">
-          <p className="text-sm text-blue-800 font-medium">
+        <div className="bg-gradient-to-r from-red-900/20 to-red-800/20 p-6 rounded-xl border border-red-600/30">
+          <p className="text-sm text-red-200 font-medium">
             <strong>Sans engagement</strong> - Nous vous recontactons rapidement pour établir un devis personnalisé et gratuit.
           </p>
         </div>

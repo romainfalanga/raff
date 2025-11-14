@@ -16,13 +16,13 @@ export const Hero: React.FC<HeroProps> = ({
   onCtaClick
 }) => {
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden min-h-screen flex items-center pt-24 lg:pt-0">
+    <section className="relative bg-gradient-to-br from-black via-gray-900 to-red-900 text-white overflow-hidden min-h-screen flex items-center pt-24 lg:pt-0">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.04%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30 animate-pulse"></div>
       
       {/* Gradient Overlays for Depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-blue-900/30"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-indigo-900/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-red-900/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 via-transparent to-black/20"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -31,17 +31,17 @@ export const Hero: React.FC<HeroProps> = ({
               {title}
             </h1>
             
-            <p className="text-xl lg:text-2xl text-slate-200 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               {subtitle}
             </p>
             
             <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-4 group">
-                  <div className="p-1 bg-green-500/20 rounded-full backdrop-blur-sm border border-green-400/30 group-hover:bg-green-500/30 transition-all duration-300">
-                    <CheckCircle size={18} className="text-green-400" />
+                  <div className="p-1 bg-red-500/20 rounded-full backdrop-blur-sm border border-red-400/30 group-hover:bg-red-500/30 transition-all duration-300">
+                    <CheckCircle size={18} className="text-red-400" />
                   </div>
-                  <span className="text-lg text-slate-200 font-medium group-hover:text-white transition-colors duration-300">{feature}</span>
+                  <span className="text-lg text-gray-200 font-medium group-hover:text-white transition-colors duration-300">{feature}</span>
                 </div>
               ))}
             </div>
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({
                 variant="primary"
                 size="lg"
                 icon={ArrowRight}
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-lg px-10 py-5 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-500"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-lg px-10 py-5 shadow-2xl hover:shadow-red-500/25 transform hover:scale-105 transition-all duration-500"
               >
                 Obtenir un devis gratuit
               </Button>
@@ -60,22 +60,22 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
           
           <div className="relative animate-fade-in-right" style={{ animationDelay: '0.8s' }}>
-            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-blue-600/10 via-indigo-600/10 to-slate-700/10 rounded-3xl backdrop-blur-lg border border-white/20 flex items-center justify-center overflow-hidden group hover:scale-105 transition-all duration-700">
+            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-red-600/10 via-gray-800/10 to-black/10 rounded-3xl backdrop-blur-lg border border-white/20 flex items-center justify-center overflow-hidden group hover:scale-105 transition-all duration-700">
               {/* Floating Elements */}
-              <div className="absolute top-8 right-8 w-4 h-4 bg-blue-400/30 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-12 left-8 w-6 h-6 bg-indigo-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-8 right-8 w-4 h-4 bg-red-400/30 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-12 left-8 w-6 h-6 bg-red-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               <div className="absolute top-1/3 left-12 w-3 h-3 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
               
               <div className="text-center space-y-8 z-10">
                 <div className="relative">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:shadow-blue-500/30 transition-all duration-500 group-hover:rotate-3">
+                  <div className="w-32 h-32 bg-gradient-to-br from-red-600 to-red-800 rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:shadow-red-500/30 transition-all duration-500 group-hover:rotate-3">
                     <Shield size={64} className="text-white group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-red-600/20 to-red-800/20 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Protection Complète</h3>
-                  <p className="text-slate-300 font-medium">Sans abonnement, sans surprise</p>
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-red-200 bg-clip-text text-transparent">Protection Complète</h3>
+                  <p className="text-gray-300 font-medium">Sans abonnement, sans surprise</p>
                 </div>
               </div>
             </div>
