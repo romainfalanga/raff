@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <p className="text-gray-400 text-sm">
-              © 2024 SecuriTech Pro - Raphaël Marot. Tous droits réservés.
+              © 2024 Alpilles Sécurité - Raphaël Mareau. Tous droits réservés.
             </p>
             <p className="text-gray-400 text-sm mt-2 sm:mt-0">
               Sécurité professionnelle • Sans abonnement • Investissement unique

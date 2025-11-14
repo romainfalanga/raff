@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
   const variants = {
     primary: 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white focus:ring-red-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300',
     secondary: 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white focus:ring-gray-500 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300',
-    outline: 'border-2 border-red-600 text-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-700 hover:text-white focus:ring-red-500 shadow-sm hover:shadow-md transition-all duration-300',
+    outline: 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white border-2 border-red-600 focus:ring-red-500 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300',
     ghost: 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-red-900/20 focus:ring-red-500 hover:shadow-sm transition-all duration-300',
   };
 

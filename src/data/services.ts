@@ -71,7 +71,7 @@ export const heroContent = {
 };
 
 export const aboutContent = {
-  name: "Raphaël Marot",
+  name: "Raphaël Mareau",
   age: 24,
   experience: "5 ans d'expérience",
   zones: [

@@ -50,9 +50,9 @@ export const CallToAction: React.FC<CallToActionProps> = ({
             <div className="space-y-8">
               <Button
                 onClick={onCtaClick}
-                variant="secondary"
+                variant="primary"
                 size="lg"
-                className="bg-white text-red-800 hover:bg-red-50 text-xl px-12 py-6 w-full sm:w-auto font-bold shadow-2xl hover:shadow-white/10 transform hover:scale-105 transition-all duration-500"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-xl px-12 py-6 w-full sm:w-auto font-bold shadow-2xl hover:shadow-red-500/25 transform hover:scale-105 transition-all duration-500"
               >
                 Demander un devis gratuit
               </Button>

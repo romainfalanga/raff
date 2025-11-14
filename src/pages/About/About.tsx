@@ -14,10 +14,10 @@ export const About: React.FC<AboutProps> = ({ onOpenModal }) => {
       <section className="bg-gradient-to-r from-black to-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 shadow-2xl border-4 border-white">
+            <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 shadow-2xl border-4 border-red-400">
               <img 
-                src="/src/assets/raff.png" 
-                alt="Raphaël Marot" 
+                src="/raff.png" 
+                alt="Raphaël Mareau" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
@@ -35,7 +35,7 @@ export const About: React.FC<AboutProps> = ({ onOpenModal }) => {
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-8 space-y-8">
               <h2 className="text-4xl font-bold text-white">
                 {aboutContent.name}
               </h2>
@@ -174,8 +174,8 @@ export const About: React.FC<AboutProps> = ({ onOpenModal }) => {
       </section>
 
       <CallToAction 
-        title="Prêt à Faire Confiance à SecuriTech Pro ?"
-        description="Contactez Raphaël Marot dès maintenant pour discuter de votre projet sécurité. Devis gratuit et conseil personnalisé."
+        title="Prêt à Faire Confiance à Alpilles Sécurité ?"
+        description="Contactez Raphaël Mareau dès maintenant pour discuter de votre projet sécurité. Devis gratuit et conseil personnalisé."
         onCtaClick={onOpenModal}
       />
     </div>
