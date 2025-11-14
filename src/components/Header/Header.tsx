@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Phone } from 'lucide-react';
 import { Navigation } from './Navigation';
-import { DevisModal } from './DevisModal';
 import { Button } from '../UI/Button';
 
-export const Header: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface HeaderProps {
+  onOpenModal: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export const Header: React.FC = () => {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-600 to-red-700 shadow-lg">
         <div className="px-4 py-2">
           <Button
-            onClick={() => setIsModalOpen(true)}
+            onClick={onOpenModal}
             variant="secondary"
             size="sm"
             icon={Phone}
@@ -62,7 +64,7 @@ export const Header: React.FC = () => {
             {/* Desktop Devis Button */}
             <div className="hidden lg:block">
               <Button
-                onClick={() => setIsModalOpen(true)}
+                onClick={onOpenModal}
                 variant="primary"
                 className="shrink-0 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ml-6"
               >
@@ -72,11 +74,6 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </header>
-
-      <DevisModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Layout } from './components/Layout/Layout';
+import { DevisModal } from './components/Header/DevisModal';
 import { useRouter } from './hooks/useRouter';
 import { Home } from './pages/Home/Home';
 import { Alarme } from './pages/Alarme/Alarme';
@@ -32,9 +33,15 @@ function App() {
   };
 
   return (
-    <Layout>
-      {renderPage()}
-    </Layout>
+    <>
+      <Layout onOpenModal={openModal}>
+        {renderPage()}
+      </Layout>
+      <DevisModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+      />
+    </>
   );
 }
 

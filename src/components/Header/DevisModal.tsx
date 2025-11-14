@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../UI/Modal';
 import { Button } from '../UI/Button';
 import { FormData } from '../../types';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface DevisModalProps {
   isOpen: boolean;
@@ -19,6 +19,8 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,25 +49,56 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Ici, dans une version future, on intégrera l'envoi du formulaire
-      console.log('Formulaire soumis:', formData);
-      
-      // Reset form and close modal
-      setFormData({
-        nom: '',
-        prenom: '',
-        telephone: '',
-        email: '',
-        message: '',
-      });
-      onClose();
-      
-      // Notification de succès (à implémenter)
-      alert('Votre demande de devis a été envoyée avec succès !');
+      setIsSubmitting(true);
+      setSubmitStatus('idle');
+
+      try {
+        // Préparer les données pour Netlify Forms
+        const formDataToSend = new URLSearchParams();
+        formDataToSend.append('form-name', 'devis');
+        formDataToSend.append('nom', formData.nom);
+        formDataToSend.append('prenom', formData.prenom);
+        formDataToSend.append('telephone', formData.telephone);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('message', formData.message);
+
+        // Envoyer à Netlify
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: formDataToSend.toString(),
+        });
+
+        if (response.ok) {
+          setSubmitStatus('success');
+          // Reset form
+          setFormData({
+            nom: '',
+            prenom: '',
+            telephone: '',
+            email: '',
+            message: '',
+          });
+          // Fermer la modal après 2 secondes
+          setTimeout(() => {
+            onClose();
+            setSubmitStatus('idle');
+          }, 2000);
+        } else {
+          throw new Error('Erreur lors de l\'envoi');
+        }
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi du formulaire:', error);
+        setSubmitStatus('error');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -75,7 +108,26 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose}
       title="Demander un devis gratuit"
     >
-      <form onSubmit={handleSubmit} className="space-y-4">
+      {submitStatus === 'success' ? (
+        <div className="text-center py-8">
+          <CheckCircle size={64} className="text-green-500 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-white mb-2">Demande envoyée !</h3>
+          <p className="text-gray-300">
+            Votre demande de devis a été envoyée avec succès. Nous vous recontacterons rapidement.
+          </p>
+        </div>
+      ) : (
+        <form 
+          onSubmit={handleSubmit} 
+          className="space-y-4"
+          name="devis"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          {/* Champs cachés pour Netlify */}
+          <input type="hidden" name="form-name" value="devis" />
+          <input type="hidden" name="bot-field" />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label htmlFor="nom" className="block text-sm font-medium text-slate-700 mb-1">
@@ -87,8 +139,9 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
               name="nom"
               value={formData.nom}
               onChange={handleChange}
+              disabled={isSubmitting}
               className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-                errors.nom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
+                errors.nom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white disabled:opacity-50'
               }`}
               placeholder="Votre nom"
             />
@@ -105,8 +158,9 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
               name="prenom"
               value={formData.prenom}
               onChange={handleChange}
+              disabled={isSubmitting}
               className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-                errors.prenom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
+                errors.prenom ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white disabled:opacity-50'
               }`}
               placeholder="Votre prénom"
             />
@@ -124,8 +178,9 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             name="telephone"
             value={formData.telephone}
             onChange={handleChange}
+            disabled={isSubmitting}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-              errors.telephone ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
+              errors.telephone ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white disabled:opacity-50'
             }`}
             placeholder="06 12 34 56 78"
           />
@@ -142,8 +197,9 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            disabled={isSubmitting}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ${
-              errors.email ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
+              errors.email ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white disabled:opacity-50'
             }`}
             placeholder="votre.email@exemple.com"
           />
@@ -159,9 +215,10 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
             name="message"
             value={formData.message}
             onChange={handleChange}
+            disabled={isSubmitting}
             rows={4}
             className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-300 ${
-              errors.message ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white'
+              errors.message ? 'border-red-400 bg-red-50' : 'border-gray-600 hover:border-gray-500 focus:border-red-500 bg-gray-800 hover:bg-gray-700 text-white disabled:opacity-50'
             }`}
             placeholder="Décrivez votre projet de sécurité..."
           />
@@ -174,16 +231,27 @@ export const DevisModal: React.FC<DevisModalProps> = ({ isOpen, onClose }) => {
           </p>
         </div>
 
+        {submitStatus === 'error' && (
+          <div className="bg-red-900/20 border border-red-600/30 rounded-xl p-4 flex items-center space-x-3">
+            <AlertCircle size={20} className="text-red-400 shrink-0" />
+            <p className="text-red-200 text-sm">
+              Une erreur s'est produite lors de l'envoi. Veuillez réessayer.
+            </p>
+          </div>
+        )}
+
         <Button
           type="submit"
           variant="primary"
           size="lg"
           icon={Send}
+          disabled={isSubmitting}
           className="w-full"
         >
-          Envoyer ma demande
+          {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
         </Button>
       </form>
+      )}
     </Modal>
   );
 };
